@@ -1,0 +1,262 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #0f0b0b;
+    color: white;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vh;
+}
+.navbar ul {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px; 
+}
+
+
+.navbar li a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.navbar li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* sits just under the text */
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar li a:hover::after {
+    width: 100%;
+}
+
+.hero{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+/* Metallic Text Animation for Hero Heading */
+.hero h1 {
+    background: linear-gradient(
+        90deg,
+        #333333 0%,
+        #818181 25%,
+        #ffffff 50%,
+        #818181 75%,
+        #333333 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: metallic-shine 5s linear infinite;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+}
+
+@keyframes metallic-shine {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    width: 15cm;  /* Set width to 15cm */
+    margin: 2rem auto;  /* Center the carousel and add margin top/bottom */
+    overflow: hidden;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #000000;
+    z-index: 2;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    will-change: transform;
+}
+
+.carousel-images img {
+    width: 15cm;  /* Match carousel width */
+    height: 10cm;  /* Set proportional height */
+    object-fit: cover;  /* Ensure images cover the area without distortion */
+    flex-shrink: 0;
+    transition: opacity 0.8s ease;
+    opacity: 0.85;
+}
+
+.carousel-images img.active {
+    opacity: 1;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+    background: none;
+    padding: 5px;
+    align-items: center;
+}
+
+.carousel-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    margin: 0;
+}
+
+.carousel-dot.active {
+    width: 15px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.carousel-dot:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Carousel Container and Animations */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    padding: 3rem 0;
+    overflow: hidden;
+    background-color: #ffd988;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    isolation: isolate;  /* Creates a new stacking context */
+}
+
+/* Global Shooting Star Animation */
+.shooting-star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: shootingStar 8s linear infinite;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.shooting-star:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.shooting-star:nth-child(2) {
+    top: 30%;
+    left: 85%;
+    animation-delay: 2s;
+}
+
+.shooting-star:nth-child(3) {
+    top: 60%;
+    left: 15%;
+    animation-delay: 4s;
+}
+
+.shooting-star:nth-child(4) {
+    top: 80%;
+    left: 75%;
+    animation-delay: 6s;
+}
+
+.shooting-star:nth-child(5) {
+    top: 40%;
+    left: 50%;
+    animation-delay: 3s;
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: translate(0, 0) rotate(45deg) scale(0);
+        opacity: 0;
+    }
+    10% {
+        transform: translate(50px, 50px) rotate(45deg) scale(1);
+        opacity: 1;
+    }
+    90% {
+        transform: translate(400px, 400px) rotate(45deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(450px, 450px) rotate(45deg) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Rest of your existing styles */
+
+
