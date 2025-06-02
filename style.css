@@ -1,108 +1,118 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap');
 
+:root {
+    /* Color Palette */
+    --bg-dark: #121021;
+    --card-bg: #1e1b2f;
+    --purple-accent: linear-gradient(135deg, #6b42d2, #a24cc3);
+    --orange-accent: #ff7a00;
+    --text-light: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --white: #ffffff;
+}
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #0f0b0b;
-  color: white;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  padding-top: 80px;
+.body {
+    font-family: 'Poppins', sans-serif;
 }
 
-h1, h2, .navbar h1 {
-  font-family: 'Playfair Display', serif;
-}
-
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2vh 6vw;
-  background-color: rgba(15, 11, 11, 0.95);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Shimmer heading */
+h1,
+h2,
 .navbar h1 {
-  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
-  background: linear-gradient(90deg, #00BFFF, #ffffff, #00BFFF);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 3s infinite linear;
+    font-family: 'Playfair Display', serif;
+}
+
+.navbar h1 {
+    font-size: 4vh;
+    font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+    background: linear-gradient(90deg, #00BFFF, #ffffff, #00BFFF);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s infinite linear;
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -100% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
 }
 
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vh;
+}
 
 .navbar ul {
-  list-style: none;
-  display: flex;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 7vh;
 }
 
 
 .navbar li a {
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 0.5vh 0.8vw;
-  color: rgb(222, 222, 229);
-  transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5vh 0.8vw;
+    color: rgb(222, 222, 229);
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 3vh;
 }
-
 
 .navbar li a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 2px;
-  background-color: #00BFFF;
-  transition: width 0.3s ease-in-out;
-}
-
-.navbar li a:hover {
-  color: #00BFFF;
-  transform: scale(1.08); 
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #00BFFF;
+    transition: width 0.3s ease-in-out;
 }
 
 .navbar li a:hover::after {
-  width: 100%;
+    width: 100%;
+    color: #00BFFF;
+    transform: scale(1.08);
 }
 
-
 .hero {
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
 }
 
 .hero h1 {
-  font-size: 50px;
+    font-size: 9vh;
+}
+
+.works{
+    text-align: center;
+    height: 100vh;
+}
+
+.works h1{
+    font-size: 6vh;
+    text-decoration: underline;
 }
