@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luz & Lens</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -26,18 +29,24 @@
 
     <div class="hero">
         <h1>Where Every Pixel Tells A Story</h1>
-    </div>    <div class="carousel-container">
+    </div>    
+    <div class="section-divider"></div>
+    <div class="works">
+        <h1>Our Works</h1>
+    </div>
+    <div class="section-divider"></div>
+    <div class="carousel-container">
         <div class="shooting-star"></div>
         <div class="shooting-star"></div>
         <div class="shooting-star"></div>
         <div class="carousel">
             <div class="carousel-images">
-                <img src="images/IMG-20250602-WA0016 (2).jpg" alt="Camera">
-                <img src="images/IMG-20250602-WA0018.jpg" alt="Image">
-                <img src="images/IMG-20250602-WA0019.jpg" alt="Image">
-                <img src="images/IMG-20250602-WA0021.jpg" alt="Image">
-                <img src="images/IMG-20250602-WA0023.jpg" alt="Image">
-                <img src="images/IMG_20241116_175022.jpg" alt="Image">
+                <img src="photos/WhatsApp Image 2025-06-02 at 3.24.12 PM.jpeg" alt="Image 1">
+                <img src="photos/WhatsApp Image 2025-06-02 at 3.24.12 PM (1).jpeg" alt="Image 2">
+                <img src="photos/WhatsApp Image 2025-06-02 at 3.24.12 PM (2).jpeg" alt="Image 3">
+                <img src="photos/WhatsApp Image 2025-06-02 at 3.24.13 PM.jpeg" alt="Image 4">
+                <img src="photos/WhatsApp Image 2025-06-02 at 3.24.13 PM (1).jpeg" alt="Image 5">
+                <img src="photos/IMG_20241210_131328_405.webp" alt="Image 6">
             </div>
             <button class="carousel-button prev">&#10094;</button>
             <button class="carousel-button next">&#10095;</button>
@@ -45,10 +54,63 @@
         </div>
     </div>
 
-    <div class="works">
-        <h1>Our Works</h1>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const carouselImages = carousel.querySelector('.carousel-images');
+            const images = carouselImages.querySelectorAll('img');
+            const prevButton = carousel.querySelector('.prev');
+            const nextButton = carousel.querySelector('.next');
+            const indicators = carousel.querySelector('.carousel-indicators');
+            
+            let currentIndex = 0;
+            const totalImages = images.length;
 
+            // Create indicator dots
+            images.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                indicators.appendChild(dot);
+            });
+
+            function updateCarousel() {
+                const offset = -currentIndex * carousel.offsetWidth;
+                carouselImages.style.transform = `translateX(${offset}px)`;
+                
+                // Update indicators
+                document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                updateCarousel();
+            }
+
+            // Event listeners
+            prevButton.addEventListener('click', prevSlide);
+            nextButton.addEventListener('click', nextSlide);
+
+            // Auto-advance carousel
+            setInterval(nextSlide, 5000);
+
+            // Initial update
+            updateCarousel();
+        });
+    </script>
 </body>
 
 </html>
