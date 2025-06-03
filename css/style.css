@@ -19,12 +19,51 @@
     gap: 20px; 
 }
 
+.navbar h1 {
+    font-size: 5vh;
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px 25px;
+    border: 2px solid white;
+    border-radius: 5px;
+    position: relative;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.navbar h1::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 7px;
+    pointer-events: none;
+}
+
+.navbar h1:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.navbar h1:hover::before {
+    border-color: rgba(255, 255, 255, 0.4);
+}
 
 .navbar li a {
     position: relative;
     text-decoration: none;
     color: white;
     font-weight: 500;
+    font-size: 3vh;
 }
 
 .navbar li a::after {
@@ -72,6 +111,7 @@
     letter-spacing: 2px;
 }
 
+
 @keyframes metallic-shine {
     0% {
         background-position: -200% center;
@@ -80,32 +120,35 @@
         background-position: 200% center;
     }
 }
-
-/* Carousel Styles */
 .carousel {
     position: relative;
-    width: 15cm;  /* Set width to 15cm */
-    margin: 2rem auto;  /* Center the carousel and add margin top/bottom */
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
     overflow: hidden;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     background-color: #000000;
     z-index: 2;
+    aspect-ratio: 16/9;
 }
 
 .carousel-images {
     display: flex;
     transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     will-change: transform;
+    height: 100%;
 }
 
 .carousel-images img {
-    width: 15cm;  /* Match carousel width */
-    height: 10cm;  /* Set proportional height */
-    object-fit: cover;  /* Ensure images cover the area without distortion */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     flex-shrink: 0;
     transition: opacity 0.8s ease;
     opacity: 0.85;
+    background-color: #000000;
+    padding: 10px;
 }
 
 .carousel-images img.active {
@@ -116,23 +159,25 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
     padding: 1rem;
     cursor: pointer;
     z-index: 10;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
 }
 
 .carousel-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-button.prev {
@@ -179,22 +224,21 @@
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Carousel Container and Animations */
+
 .carousel-container {
     position: relative;
     width: 100%;
-    padding: 3rem 0;
+    padding: 1rem 0 3rem 0;
     overflow: hidden;
-    background-color: #ffd988;
-    min-height: 100vh;
+    background-color: #0f0b0b;
+    min-height: 85vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     z-index: 2;
-    isolation: isolate;  /* Creates a new stacking context */
 }
 
-/* Global Shooting Star Animation */
+
 .shooting-star {
     position: fixed;
     width: 3px;
@@ -257,6 +301,47 @@
     }
 }
 
-/* Rest of your existing styles */
+.section-divider {
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 100%
+    );
+    margin: 2rem auto;
+}
+
+.works {
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+    background-color: #0f0b0b;
+}
+
+.works h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    background: linear-gradient(
+        90deg,
+        #333333 0%,
+        #818181 25%,
+        #ffffff 50%,
+        #818181 75%,
+        #333333 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: metallic-shine 5s linear infinite;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+}
+
+
 
 
